@@ -26,10 +26,13 @@ class textProcessor {
         fs.writeFile('output.csv', textForCsv, 'utf8', (err) => {
             if (err) {
               console.log('Error during CSV creation', err);
+              this.cliReject();
             } else{
               console.log('CSV created!');
+              this.cliResolve();
             }
         });
+        return this.cliPromise;
     }
 }
 

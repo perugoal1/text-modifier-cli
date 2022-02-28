@@ -14,13 +14,19 @@ class cliReader {
     }
     
     read(){
-        this.rl.question("Please provide the input text.... \n", (name) => {
-            this.rl.close();
-            this.cliResolve(name);
-        });
+        let waitForUserInput = () => {
+            this.rl.question("Please provide the input text.... \n", (answer) => {
+              if (answer != ""){
+                 this.rl.close();
+                 this.cliResolve(answer);
+              } else {
+                  waitForUserInput();
+              }
+            });
+        }
+        waitForUserInput();
         return this.cliPromise;
     }
-
 }
 
 export default cliReader;

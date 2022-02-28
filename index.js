@@ -1,17 +1,30 @@
 import cliReader from './src/read.js'
 import textProcessor from './src/textProcessor.js'
 
-async function main(params) {
-    const readInstance = new cliReader();
-    const data = await readInstance.read();
-    const textInstance = new textProcessor(data);
+class main {
+    constructor(){
+        const readInstance = new cliReader();
 
-    const upperText = textInstance.convertToUppercase();
-    console.log("\n\nOUTPUT: \n");
-    console.log(upperText);
-    const alternateText = textInstance.alternateUpperLower();
-    console.log(alternateText);
-    textInstance.writeToCsv();
+        this.value = '';
+        this.readInstance = readInstance;
+    }
+
+    async readFromCli(){
+        const data = await this.readInstance.read();
+        this.value = data;
+    }
+
+    processText(){
+        const textInstance = new textProcessor(this.value);
+        const upperText = textInstance.convertToUppercase();
+        console.log("\n\nOUTPUT: \n");
+        console.log(upperText);
+        const alternateText = textInstance.alternateUpperLower();
+        console.log(alternateText);
+        textInstance.writeToCsv();
+    }
 }
 
-await main();
+const mainInstance = new main();
+await mainInstance.readFromCli();
+mainInstance.processText();
