@@ -10,18 +10,26 @@ class main {
     }
 
     async readFromCli(){
-        const data = await this.readInstance.read();
-        this.value = data;
+        try {
+            const data = await this.readInstance.read();
+            this.value = data;
+        } catch(e){
+            console.error('Error from command line: ', e);
+        }
     }
 
     processText(){
-        const textInstance = new textProcessor(this.value);
-        const upperText = textInstance.convertToUppercase();
-        console.log("\n\nOUTPUT: \n");
-        console.log(upperText);
-        const alternateText = textInstance.alternateUpperLower();
-        console.log(alternateText);
-        textInstance.writeToCsv();
+        try {
+            const textInstance = new textProcessor(this.value);
+            const upperText = textInstance.convertToUppercase();
+            console.log("\n\nOUTPUT: \n");
+            console.log(upperText);
+            const alternateText = textInstance.alternateUpperLower();
+            console.log(alternateText);
+            textInstance.writeToCsv();
+        } catch (e) {
+            console.error('Error while processing text: ', e);
+        }
     }
 }
 
