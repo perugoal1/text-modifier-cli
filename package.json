@@ -1,0 +1,20 @@
+{
+  "name": "text-modifier-cli",
+  "version": "1.0.0",
+  "description": "A CLI tool to modify provided text input",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perugoal1/text-modifier-cli.git"
+  },
+  "author": "Peru",
+  "license": "GNU General Public License v3.0",
+  "bugs": {
+    "url": "https://github.com/perugoal1/text-modifier-cli/issues"
+  },
+  "homepage": "https://github.com/perugoal1/text-modifier-cli#readme"
+}
